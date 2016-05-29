@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
+    <script language="javascript" src="../dist/js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="../dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<p id="events">Hello Bootstrap</p>
+<button type="button" onclick="loadEvents()">All Events</button>
+<script>
+    function loadEvents() {
+        var xhttp;
+        if (window.XMLHttpRequest) {
+            // code for modern browsers
+            xhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                document.getElementById("events").innerHTML = xhttp.responseText;
+            }
+            else{
+                document.getElementById("events").innerHTML = "Error";
+            }
+        }
+        xhttp.open("GET", "http://localhost:3000/events", true);
+        xhttp.send();
+    }
+</script>
+</body>
+</html>
